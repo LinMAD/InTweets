@@ -35,7 +35,7 @@ func InitServerAPI(c *domain.TwitterCredential, l *core.Logger) *ServerAPI {
 	return ws
 }
 
-// loadHandlers api routes
+// LoadRouteHandlers api routes
 func (sApi *ServerAPI) LoadRouteHandlers() {
 	sApi.router.Handle("/ws", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 
@@ -80,9 +80,9 @@ func (sApi *ServerAPI) handleConnection(conn *websocket.Conn) {
 			if ok := twitterClient.StartStream(msg.Data); !ok {
 				sApi.log.Errorf("Twitter client: Unexpected error while creating stream for tweets...")
 				return
-			} else {
-				sApi.log.Debugf("Twitter client: Tweets feed started...")
 			}
+
+			sApi.log.Debugf("Twitter client: Tweets feed started...")
 
 			go func(exit chan bool) {
 				tweetCh := make(chan string)

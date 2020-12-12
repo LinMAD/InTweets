@@ -11,7 +11,7 @@ import (
 // ClientTwitter ...
 type ClientTwitter struct {
 	owner      string
-	twitApi    *anaconda.TwitterApi
+	twitAPI    *anaconda.TwitterApi
 	twitStream *anaconda.Stream
 	log        *core.Logger
 }
@@ -22,11 +22,11 @@ func InitClientTwitter(owner string, tc *domain.TwitterCredential, l *core.Logge
 	anaconda.SetConsumerSecret(tc.ConsumerSecret)
 
 	c := &ClientTwitter{
-		twitApi: anaconda.NewTwitterApi(tc.AccessToken, tc.AccessTokenSecret),
+		twitAPI: anaconda.NewTwitterApi(tc.AccessToken, tc.AccessTokenSecret),
 		log:     l,
 		owner:   owner,
 	}
-	c.twitApi.SetLogger(l)
+	c.twitAPI.SetLogger(l)
 
 	l.Infof("Twitter client initialized for owner: %s...", owner)
 
@@ -39,7 +39,7 @@ func (t *ClientTwitter) StartStream(track string) bool {
 		t.StopStream()
 	}
 
-	t.twitStream = t.twitApi.PublicStreamFilter(
+	t.twitStream = t.twitAPI.PublicStreamFilter(
 		url.Values{"track": []string{track}},
 	)
 
