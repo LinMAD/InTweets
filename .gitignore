@@ -1,2 +1,7 @@
 # General ignore file
 .idea
+
+# Project related
+vendor
+InTweets.exe
+InTweets
