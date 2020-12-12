@@ -1,0 +1,13 @@
+package domain
+
+// TwitterCredential https://developer.twitter.com/en/docs/authentication/oauth-1-0a
+type TwitterCredential struct {
+	// ConsumerKey ...
+	ConsumerKey string
+	// ConsumerSecret ...
+	ConsumerSecret string
+	// AccessToken ...
+	AccessToken string
+	// AccessTokenSecret ...
+	AccessTokenSecret string
+}
