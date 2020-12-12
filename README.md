@@ -25,7 +25,23 @@ TWITTER_ACCESS_TOKEN_SECRET
 When everything ready execute the application and connect via WebSocket and send an interesting track to Twitter,
 after you will get tweets in a stream.
 
+WebSocket request body example:
+```json
+{
+  "data": "cat"
+}
+```
+
 It's possible to configure a host and port where WebSocket will be located.
+
+#### Docker container
+There is `Dockerfile` and `docker-compose` deal with dependencies and compilation, recommended only for development.
+
+```text
+cmd:$ docker-compose up
+```
+
+#### Local execution
 ```text
 cmd:$ ./InTweets --help
 
